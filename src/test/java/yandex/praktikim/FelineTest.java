@@ -43,17 +43,11 @@ public class FelineTest {
     }
 
     @Test
-    public void eatMeat() {
+    public void eatMeat() throws Exception {
         var expected = List.of("Животные", "Птицы", "Рыба");
-        try {
             var actual = new Feline().eatMeat();
             Assert.assertEquals("Не тот список еды",
                     expected,
                     actual);
-        } catch (Exception ex) {
-            Assert.assertEquals("Не ожидаемая ошибка",
-                    "Неизвестный вид животного, используйте значение Травоядное или Хищник",
-                    ex.getMessage());
-        }
     }
 }

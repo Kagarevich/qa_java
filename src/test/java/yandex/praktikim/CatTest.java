@@ -18,21 +18,14 @@ public class CatTest {
     Feline feline;
 
     @Test
-    public void getFoodMockedMeatListTest() {
+    public void getFoodMockedMeatListTest() throws Exception {
         Cat cat = new Cat(feline);
         List<String> expected = List.of("Животные", "Мясо", "Рыба");
-        try {
-            Mockito.when(feline.eatMeat()).thenReturn(expected);
-            var actual = cat.getFood();
-            Assert.assertEquals("Не тот список еды",
-                    actual,
-                    expected);
-        } catch (Exception ex) {
-            Assert.assertEquals("Не ожидаемая ошибка",
-                    "Неизвестный вид животного, используйте значение Травоядное или Хищник",
-                    ex.getMessage());
-        }
-
+        Mockito.when(feline.eatMeat()).thenReturn(expected);
+        var actual = cat.getFood();
+        Assert.assertEquals("Не тот список еды",
+                actual,
+                expected);
     }
 
     @Test
